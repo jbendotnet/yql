@@ -305,25 +305,25 @@ func TestMatch_String(t *testing.T) {
 	}
 }
 
-func TestMatch_StringArr(t *testing.T) {
+func TestMatch_StringSet(t *testing.T) {
 	var testData = []struct {
 		rawYql string
 		data   map[string]interface{}
 		out    bool
 	}{
 		{
-			rawYql: `a='one'`,
+			rawYql: `a has ('one')`,
 			data: map[string]interface{}{
-				"a": []string{"one", "two", "three"},
+				"a": []interface{}{"one", "two", "three"},
 			},
 			out: true,
 		},
 		{
-			rawYql: `a='one'`,
+			rawYql: `a has ('four')`,
 			data: map[string]interface{}{
-				"a": "one",
+				"a": []interface{}{"one", "two", "three"},
 			},
-			out: true,
+			out: false,
 		},
 	}
 	ass := assert.New(t)
