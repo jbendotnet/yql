@@ -84,15 +84,6 @@ func cmpStr(actual, expect string, op string) bool {
 	}
 }
 
-func cmpStrSet(actual []string, expect string, op string) bool {
-	for _, a := range actual {
-		if matched := cmpStr(a, expect, op); matched {
-			return true
-		}
-	}
-	return false
-}
-
 func cmpBool(actual, expect bool, op string) bool {
 	switch op {
 	case opEqual:

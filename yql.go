@@ -207,14 +207,6 @@ func compare(actualValue interface{}, expectValue []string, op string) bool {
 		if ss, err := parseStringSet(actual); err == nil {
 			return cmpStringSet(ss, []string{e}, op)
 		}
-		//for _, actualVal := range actual {
-		//	if s, is := actualVal.(string); is {
-		//		matched := cmpStr(s, e, op)
-		//		if matched {
-		//			return true
-		//		}
-		//	}
-		//}
 		return false
 	case bool:
 		expect, err := strconv.ParseBool(e)
@@ -223,12 +215,6 @@ func compare(actualValue interface{}, expectValue []string, op string) bool {
 		}
 		return cmpBool(actual, expect, op)
 	default:
-		// maybe a slice?
-		stringSlice, ok := actualValue.([]string)
-		if ok {
-			return cmpStrSet(stringSlice, e, op)
-		}
-		fmt.Println(actual)
 		return false
 	}
 }
