@@ -1,6 +1,7 @@
-// Generated from Yql.g4 by ANTLR 4.7.
+// Code generated from Yql.g4 by ANTLR 4.7.1. DO NOT EDIT.
 
 package grammar // Yql
+
 import (
 	"fmt"
 	"reflect"
@@ -15,14 +16,14 @@ var _ = reflect.Copy
 var _ = strconv.Itoa
 
 var parserATN = []uint16{
-	3, 24715, 42794, 33075, 47597, 16764, 15335, 30598, 22884, 3, 27, 65, 4,
+	3, 24715, 42794, 33075, 47597, 16764, 15335, 30598, 22884, 3, 29, 65, 4,
 	2, 9, 2, 4, 3, 9, 3, 4, 4, 9, 4, 4, 5, 9, 5, 4, 6, 9, 6, 3, 2, 3, 2, 3,
 	3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 5, 3, 21, 10, 3, 3, 3, 3, 3, 3, 3, 3,
 	3, 3, 3, 3, 3, 7, 3, 29, 10, 3, 12, 3, 14, 3, 32, 11, 3, 3, 4, 3, 4, 3,
 	4, 3, 4, 3, 4, 3, 4, 3, 4, 3, 4, 3, 4, 3, 4, 7, 4, 44, 10, 4, 12, 4, 14,
 	4, 47, 11, 4, 3, 4, 3, 4, 5, 4, 51, 10, 4, 3, 5, 3, 5, 3, 5, 3, 5, 6, 5,
 	57, 10, 5, 13, 5, 14, 5, 58, 5, 5, 61, 10, 5, 3, 6, 3, 6, 3, 6, 2, 3, 4,
-	7, 2, 4, 6, 8, 10, 2, 5, 3, 2, 7, 12, 3, 2, 13, 16, 4, 2, 20, 21, 24, 26,
+	7, 2, 4, 6, 8, 10, 2, 5, 3, 2, 7, 12, 3, 2, 13, 18, 4, 2, 22, 23, 26, 28,
 	2, 66, 2, 12, 3, 2, 2, 2, 4, 20, 3, 2, 2, 2, 6, 50, 3, 2, 2, 2, 8, 52,
 	3, 2, 2, 2, 10, 62, 3, 2, 2, 2, 12, 13, 5, 4, 3, 2, 13, 3, 3, 2, 2, 2,
 	14, 15, 8, 3, 1, 2, 15, 21, 5, 6, 4, 2, 16, 17, 7, 5, 2, 2, 17, 18, 5,
@@ -33,11 +34,11 @@ var parserATN = []uint16{
 	2, 30, 28, 3, 2, 2, 2, 30, 31, 3, 2, 2, 2, 31, 5, 3, 2, 2, 2, 32, 30, 3,
 	2, 2, 2, 33, 34, 5, 8, 5, 2, 34, 35, 9, 2, 2, 2, 35, 36, 5, 10, 6, 2, 36,
 	51, 3, 2, 2, 2, 37, 38, 5, 8, 5, 2, 38, 39, 9, 3, 2, 2, 39, 40, 7, 5, 2,
-	2, 40, 45, 5, 10, 6, 2, 41, 42, 7, 17, 2, 2, 42, 44, 5, 10, 6, 2, 43, 41,
+	2, 40, 45, 5, 10, 6, 2, 41, 42, 7, 19, 2, 2, 42, 44, 5, 10, 6, 2, 43, 41,
 	3, 2, 2, 2, 44, 47, 3, 2, 2, 2, 45, 43, 3, 2, 2, 2, 45, 46, 3, 2, 2, 2,
 	46, 48, 3, 2, 2, 2, 47, 45, 3, 2, 2, 2, 48, 49, 7, 6, 2, 2, 49, 51, 3,
 	2, 2, 2, 50, 33, 3, 2, 2, 2, 50, 37, 3, 2, 2, 2, 51, 7, 3, 2, 2, 2, 52,
-	60, 7, 23, 2, 2, 53, 54, 7, 18, 2, 2, 54, 55, 7, 22, 2, 2, 55, 57, 7, 19,
+	60, 7, 25, 2, 2, 53, 54, 7, 20, 2, 2, 54, 55, 7, 24, 2, 2, 55, 57, 7, 21,
 	2, 2, 56, 53, 3, 2, 2, 2, 57, 58, 3, 2, 2, 2, 58, 56, 3, 2, 2, 2, 58, 59,
 	3, 2, 2, 2, 59, 61, 3, 2, 2, 2, 60, 56, 3, 2, 2, 2, 60, 61, 3, 2, 2, 2,
 	61, 9, 3, 2, 2, 2, 62, 63, 9, 4, 2, 2, 63, 11, 3, 2, 2, 2, 9, 20, 28, 30,
@@ -48,12 +49,13 @@ var deserializedATN = deserializer.DeserializeFromUInt16(parserATN)
 
 var literalNames = []string{
 	"", "'and'", "'or'", "'('", "')'", "'='", "'!='", "'>'", "'<'", "'>='",
-	"'<='", "'in'", "'!in'", "'\u2229'", "'!\u2229'", "','", "'.'", "'()'",
-	"'true'", "'false'",
+	"'<='", "'in'", "'!in'", "'\u2229'", "'!\u2229'", "'has'", "'!has'", "','",
+	"'.'", "'()'", "'true'", "'false'",
 }
 var symbolicNames = []string{
 	"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
-	"TRUE", "FALSE", "FUNC", "FIELDNAME", "STRING", "INT", "FLOAT", "WS",
+	"", "", "TRUE", "FALSE", "FUNC", "FIELDNAME", "STRING", "INT", "FLOAT",
+	"WS",
 }
 
 var ruleNames = []string{
@@ -105,14 +107,16 @@ const (
 	YqlParserT__14     = 15
 	YqlParserT__15     = 16
 	YqlParserT__16     = 17
-	YqlParserTRUE      = 18
-	YqlParserFALSE     = 19
-	YqlParserFUNC      = 20
-	YqlParserFIELDNAME = 21
-	YqlParserSTRING    = 22
-	YqlParserINT       = 23
-	YqlParserFLOAT     = 24
-	YqlParserWS        = 25
+	YqlParserT__17     = 18
+	YqlParserT__18     = 19
+	YqlParserTRUE      = 20
+	YqlParserFALSE     = 21
+	YqlParserFUNC      = 22
+	YqlParserFIELDNAME = 23
+	YqlParserSTRING    = 24
+	YqlParserINT       = 25
+	YqlParserFLOAT     = 26
+	YqlParserWS        = 27
 )
 
 // YqlParser rules.
@@ -714,21 +718,23 @@ func (p *YqlParser) BooleanExpr() (localctx IBooleanExprContext) {
 			p.SetState(31)
 			p.Leftexpr()
 		}
-		p.SetState(32)
+		{
+			p.SetState(32)
 
-		var _lt = p.GetTokenStream().LT(1)
+			var _lt = p.GetTokenStream().LT(1)
 
-		localctx.(*BooleanExprContext).op = _lt
+			localctx.(*BooleanExprContext).op = _lt
 
-		_la = p.GetTokenStream().LA(1)
+			_la = p.GetTokenStream().LA(1)
 
-		if !(((_la)&-(0x1f+1)) == 0 && ((1<<uint(_la))&((1<<YqlParserT__4)|(1<<YqlParserT__5)|(1<<YqlParserT__6)|(1<<YqlParserT__7)|(1<<YqlParserT__8)|(1<<YqlParserT__9))) != 0) {
-			var _ri = p.GetErrorHandler().RecoverInline(p)
+			if !(((_la)&-(0x1f+1)) == 0 && ((1<<uint(_la))&((1<<YqlParserT__4)|(1<<YqlParserT__5)|(1<<YqlParserT__6)|(1<<YqlParserT__7)|(1<<YqlParserT__8)|(1<<YqlParserT__9))) != 0) {
+				var _ri = p.GetErrorHandler().RecoverInline(p)
 
-			localctx.(*BooleanExprContext).op = _ri
-		} else {
-			p.GetErrorHandler().ReportMatch(p)
-			p.Consume()
+				localctx.(*BooleanExprContext).op = _ri
+			} else {
+				p.GetErrorHandler().ReportMatch(p)
+				p.Consume()
+			}
 		}
 		{
 			p.SetState(33)
@@ -741,21 +747,23 @@ func (p *YqlParser) BooleanExpr() (localctx IBooleanExprContext) {
 			p.SetState(35)
 			p.Leftexpr()
 		}
-		p.SetState(36)
+		{
+			p.SetState(36)
 
-		var _lt = p.GetTokenStream().LT(1)
+			var _lt = p.GetTokenStream().LT(1)
 
-		localctx.(*BooleanExprContext).op = _lt
+			localctx.(*BooleanExprContext).op = _lt
 
-		_la = p.GetTokenStream().LA(1)
+			_la = p.GetTokenStream().LA(1)
 
-		if !(((_la)&-(0x1f+1)) == 0 && ((1<<uint(_la))&((1<<YqlParserT__10)|(1<<YqlParserT__11)|(1<<YqlParserT__12)|(1<<YqlParserT__13))) != 0) {
-			var _ri = p.GetErrorHandler().RecoverInline(p)
+			if !(((_la)&-(0x1f+1)) == 0 && ((1<<uint(_la))&((1<<YqlParserT__10)|(1<<YqlParserT__11)|(1<<YqlParserT__12)|(1<<YqlParserT__13)|(1<<YqlParserT__14)|(1<<YqlParserT__15))) != 0) {
+				var _ri = p.GetErrorHandler().RecoverInline(p)
 
-			localctx.(*BooleanExprContext).op = _ri
-		} else {
-			p.GetErrorHandler().ReportMatch(p)
-			p.Consume()
+				localctx.(*BooleanExprContext).op = _ri
+			} else {
+				p.GetErrorHandler().ReportMatch(p)
+				p.Consume()
+			}
 		}
 		{
 			p.SetState(37)
@@ -769,10 +777,10 @@ func (p *YqlParser) BooleanExpr() (localctx IBooleanExprContext) {
 		p.GetErrorHandler().Sync(p)
 		_la = p.GetTokenStream().LA(1)
 
-		for _la == YqlParserT__14 {
+		for _la == YqlParserT__16 {
 			{
 				p.SetState(39)
-				p.Match(YqlParserT__14)
+				p.Match(YqlParserT__16)
 			}
 			{
 				p.SetState(40)
@@ -893,15 +901,15 @@ func (p *YqlParser) Leftexpr() (localctx ILeftexprContext) {
 	p.GetErrorHandler().Sync(p)
 	_la = p.GetTokenStream().LA(1)
 
-	if _la == YqlParserT__15 {
+	if _la == YqlParserT__17 {
 		p.SetState(54)
 		p.GetErrorHandler().Sync(p)
 		_la = p.GetTokenStream().LA(1)
 
-		for ok := true; ok; ok = _la == YqlParserT__15 {
+		for ok := true; ok; ok = _la == YqlParserT__17 {
 			{
 				p.SetState(51)
-				p.Match(YqlParserT__15)
+				p.Match(YqlParserT__17)
 			}
 			{
 				p.SetState(52)
@@ -909,7 +917,7 @@ func (p *YqlParser) Leftexpr() (localctx ILeftexprContext) {
 			}
 			{
 				p.SetState(53)
-				p.Match(YqlParserT__16)
+				p.Match(YqlParserT__18)
 			}
 
 			p.SetState(56)
@@ -1022,14 +1030,16 @@ func (p *YqlParser) Value() (localctx IValueContext) {
 	}()
 
 	p.EnterOuterAlt(localctx, 1)
-	p.SetState(60)
-	_la = p.GetTokenStream().LA(1)
+	{
+		p.SetState(60)
+		_la = p.GetTokenStream().LA(1)
 
-	if !(((_la)&-(0x1f+1)) == 0 && ((1<<uint(_la))&((1<<YqlParserTRUE)|(1<<YqlParserFALSE)|(1<<YqlParserSTRING)|(1<<YqlParserINT)|(1<<YqlParserFLOAT))) != 0) {
-		p.GetErrorHandler().RecoverInline(p)
-	} else {
-		p.GetErrorHandler().ReportMatch(p)
-		p.Consume()
+		if !(((_la)&-(0x1f+1)) == 0 && ((1<<uint(_la))&((1<<YqlParserTRUE)|(1<<YqlParserFALSE)|(1<<YqlParserSTRING)|(1<<YqlParserINT)|(1<<YqlParserFLOAT))) != 0) {
+			p.GetErrorHandler().RecoverInline(p)
+		} else {
+			p.GetErrorHandler().ReportMatch(p)
+			p.Consume()
+		}
 	}
 
 	return localctx

@@ -9,7 +9,7 @@ expr: booleanExpr       #boolExpr
     ;
 
 booleanExpr: leftexpr op=('='|'!='|'>'|'<'|'>='|'<=') value
-    | leftexpr op=('in'|'!in'|'∩'|'!∩') '(' value (',' value)* ')'
+    | leftexpr op=('in'|'!in'|'∩'|'!∩'|'has'|'!has') '(' value (',' value)* ')'
     ;
 leftexpr: FIELDNAME (('.' FUNC '()')+)?
     ;

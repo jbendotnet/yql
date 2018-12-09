@@ -1,6 +1,7 @@
-// Generated from Yql.g4 by ANTLR 4.7.
+// Code generated from Yql.g4 by ANTLR 4.7.1. DO NOT EDIT.
 
 package grammar // Yql
+
 import "github.com/antlr/antlr4/runtime/Go/antlr"
 
 // YqlListener is a complete listener for a parse tree produced by YqlParser.

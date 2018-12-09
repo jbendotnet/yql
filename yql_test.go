@@ -305,6 +305,35 @@ func TestMatch_String(t *testing.T) {
 	}
 }
 
+func TestMatch_StringArr(t *testing.T) {
+	var testData = []struct {
+		rawYql string
+		data   map[string]interface{}
+		out    bool
+	}{
+		{
+			rawYql: `a='one'`,
+			data: map[string]interface{}{
+				"a": []string{"one", "two", "three"},
+			},
+			out: true,
+		},
+		{
+			rawYql: `a='one'`,
+			data: map[string]interface{}{
+				"a": "one",
+			},
+			out: true,
+		},
+	}
+	ass := assert.New(t)
+	for _, tc := range testData {
+		ok, err := Match(tc.rawYql, tc.data)
+		ass.NoError(err)
+		ass.Equal(tc.out, ok, "rawYql=%s||data=%+v", tc.rawYql, tc.data)
+	}
+}
+
 func TestMatch__Float(t *testing.T) {
 	var testData = []struct {
 		rawYql string

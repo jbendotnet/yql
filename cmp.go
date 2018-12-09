@@ -17,6 +17,8 @@ const (
 	opNotInter    = "!∩"
 	opIn          = "in"
 	opNotIn       = "!in"
+	opHas 		  = "has"
+	opNotHas 	  = "!has"
 )
 
 const (
@@ -75,9 +77,20 @@ func cmpStr(actual, expect string, op string) bool {
 		return actual < expect
 	case opLessEqual:
 		return actual <= expect
+	case opHas:
+		return cmpStringSet([]string{actual}, []string{expect}, op)
 	default:
 		return false
 	}
+}
+
+func cmpStrSet(actual []string, expect string, op string) bool {
+	for _, a := range actual {
+		if matched := cmpStr(a, expect, op); matched {
+			return true
+		}
+	}
+	return false
 }
 
 func cmpBool(actual, expect bool, op string) bool {
@@ -93,7 +106,7 @@ func cmpBool(actual, expect bool, op string) bool {
 
 func compareSet(actual interface{}, expect []string, op string) bool {
 	switch op {
-	case opEqual, opNotEqual, opInter, opNotInter, opIn, opNotIn:
+	case opEqual, opNotEqual, opInter, opNotInter, opIn, opNotIn, opHas, opNotHas:
 	default:
 		return false
 	}
@@ -114,6 +127,11 @@ func compareSet(actual interface{}, expect []string, op string) bool {
 		return cmpFloatSet(actualArr, expect, op)
 	case []string:
 		return cmpStringSet(actualArr, expect, op)
+	case []interface{}:
+		if ss, err := parseStringSet(actualArr); err == nil {
+			return cmpStringSet(ss, expect, op)
+		}
+		return false
 	default:
 		return false
 	}
@@ -182,6 +200,8 @@ var stringSetCmpFunc = map[string]func([]string, []string) bool{
 	opNotInter: strSetNotInter,
 	opIn:       strSetBelong,
 	opNotIn:    strSetNotBelong,
+	opHas:      strSetContains,
+	opNotHas:   strSetNotContains,
 }
 
 func cmpStringSet(actual []string, expect []string, op string) bool {
@@ -332,6 +352,26 @@ func strSetInter(actualVals []string, expectVals []string) bool {
 
 func strSetNotInter(actualVals []string, expectVals []string) bool {
 	return !strSetInter(actualVals, expectVals)
+}
+
+func strSetContains(actualVals []string, expectVals []string) bool {
+	length := len(expectVals)
+	if len(actualVals) == 0 || length == 0 {
+		return false
+	}
+	sort.Strings(expectVals)
+	for _, actual := range actualVals {
+		for _, expect := range expectVals {
+			if actual == expect {
+				return true
+			}
+		}
+	}
+	return false
+}
+
+func strSetNotContains(actualVals []string, expectVals []string) bool {
+	return !strSetContains(actualVals, expectVals)
 }
 
 func floatEqual(a, b float64) bool {

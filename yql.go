@@ -1,11 +1,12 @@
 package yql
 
 import (
+	"errors"
 	"fmt"
+	"github.com/caibirdme/yql/internal/grammar"
 	"strconv"
 
 	"github.com/antlr/antlr4/runtime/Go/antlr"
-	"github.com/caibirdme/yql/internal/grammar"
 	"github.com/caibirdme/yql/internal/stack"
 )
 
@@ -202,6 +203,19 @@ func compare(actualValue interface{}, expectValue []string, op string) bool {
 		return cmpFloat(actual, expect, op)
 	case string:
 		return cmpStr(actual, e, op)
+	case []interface{}:
+		if ss, err := parseStringSet(actual); err == nil {
+			return cmpStringSet(ss, []string{e}, op)
+		}
+		//for _, actualVal := range actual {
+		//	if s, is := actualVal.(string); is {
+		//		matched := cmpStr(s, e, op)
+		//		if matched {
+		//			return true
+		//		}
+		//	}
+		//}
+		return false
 	case bool:
 		expect, err := strconv.ParseBool(e)
 		if nil != err {
@@ -209,6 +223,12 @@ func compare(actualValue interface{}, expectValue []string, op string) bool {
 		}
 		return cmpBool(actual, expect, op)
 	default:
+		// maybe a slice?
+		stringSlice, ok := actualValue.([]string)
+		if ok {
+			return cmpStrSet(stringSlice, e, op)
+		}
+		fmt.Println(actual)
 		return false
 	}
 }
@@ -223,4 +243,16 @@ func removeQuote(str string) string {
 		r--
 	}
 	return str[l:r]
+}
+
+func parseStringSet(val []interface{}) ([]string, error) {
+	var set []string
+	for _, v := range val {
+		s, is := v.(string)
+		if !is {
+			return set, errors.New("v in vals is not a string")
+		}
+		set = append(set, s)
+	}
+	return set, nil
 }
