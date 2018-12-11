@@ -118,11 +118,6 @@ func compareSet(actual interface{}, expect []string, op string) bool {
 		return cmpFloatSet(actualArr, expect, op)
 	case []string:
 		return cmpStringSet(actualArr, expect, op)
-	case []interface{}:
-		if ss, err := parseStringSet(actualArr); err == nil {
-			return cmpStringSet(ss, expect, op)
-		}
-		return false
 	default:
 		return false
 	}

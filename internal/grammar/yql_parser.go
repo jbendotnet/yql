@@ -23,7 +23,7 @@ var parserATN = []uint16{
 	4, 3, 4, 3, 4, 3, 4, 3, 4, 3, 4, 3, 4, 3, 4, 7, 4, 44, 10, 4, 12, 4, 14,
 	4, 47, 11, 4, 3, 4, 3, 4, 5, 4, 51, 10, 4, 3, 5, 3, 5, 3, 5, 3, 5, 6, 5,
 	57, 10, 5, 13, 5, 14, 5, 58, 5, 5, 61, 10, 5, 3, 6, 3, 6, 3, 6, 2, 3, 4,
-	7, 2, 4, 6, 8, 10, 2, 5, 3, 2, 7, 12, 3, 2, 13, 18, 4, 2, 22, 23, 26, 28,
+	7, 2, 4, 6, 8, 10, 2, 5, 3, 2, 7, 14, 3, 2, 13, 18, 4, 2, 22, 23, 26, 28,
 	2, 66, 2, 12, 3, 2, 2, 2, 4, 20, 3, 2, 2, 2, 6, 50, 3, 2, 2, 2, 8, 52,
 	3, 2, 2, 2, 10, 62, 3, 2, 2, 2, 12, 13, 5, 4, 3, 2, 13, 3, 3, 2, 2, 2,
 	14, 15, 8, 3, 1, 2, 15, 21, 5, 6, 4, 2, 16, 17, 7, 5, 2, 2, 17, 18, 5,
@@ -49,7 +49,7 @@ var deserializedATN = deserializer.DeserializeFromUInt16(parserATN)
 
 var literalNames = []string{
 	"", "'and'", "'or'", "'('", "')'", "'='", "'!='", "'>'", "'<'", "'>='",
-	"'<='", "'in'", "'!in'", "'\u2229'", "'!\u2229'", "'has'", "'!has'", "','",
+	"'<='", "'has'", "'!has'", "'in'", "'!in'", "'\u2229'", "'!\u2229'", "','",
 	"'.'", "'()'", "'true'", "'false'",
 }
 var symbolicNames = []string{
@@ -727,7 +727,7 @@ func (p *YqlParser) BooleanExpr() (localctx IBooleanExprContext) {
 
 			_la = p.GetTokenStream().LA(1)
 
-			if !(((_la)&-(0x1f+1)) == 0 && ((1<<uint(_la))&((1<<YqlParserT__4)|(1<<YqlParserT__5)|(1<<YqlParserT__6)|(1<<YqlParserT__7)|(1<<YqlParserT__8)|(1<<YqlParserT__9))) != 0) {
+			if !(((_la)&-(0x1f+1)) == 0 && ((1<<uint(_la))&((1<<YqlParserT__4)|(1<<YqlParserT__5)|(1<<YqlParserT__6)|(1<<YqlParserT__7)|(1<<YqlParserT__8)|(1<<YqlParserT__9)|(1<<YqlParserT__10)|(1<<YqlParserT__11))) != 0) {
 				var _ri = p.GetErrorHandler().RecoverInline(p)
 
 				localctx.(*BooleanExprContext).op = _ri

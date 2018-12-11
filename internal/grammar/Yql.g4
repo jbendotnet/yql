@@ -8,7 +8,7 @@ expr: booleanExpr       #boolExpr
     | '(' expr ')'      #embbedExpr
     ;
 
-booleanExpr: leftexpr op=('='|'!='|'>'|'<'|'>='|'<=') value
+booleanExpr: leftexpr op=('='|'!='|'>'|'<'|'>='|'<='|'has'|'!has') value
     | leftexpr op=('in'|'!in'|'∩'|'!∩'|'has'|'!has') '(' value (',' value)* ')'
     ;
 leftexpr: FIELDNAME (('.' FUNC '()')+)?

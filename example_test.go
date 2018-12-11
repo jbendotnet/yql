@@ -7,8 +7,11 @@ import (
 )
 
 func ExampleMatch() {
-	rawYQL := `name='deen' and age>=23 and (hobby in ('soccer', 'swim') or score>90)`
-	result, _ := yql.Match(rawYQL, map[string]interface{}{
+	var rawYQL string
+	var result bool
+
+	rawYQL = `name='deen' and age>=23 and (hobby in ('soccer', 'swim') or score>90)`
+	result, _ = yql.Match(rawYQL, map[string]interface{}{
 		"name":  "deen",
 		"age":   23,
 		"hobby": "basketball",
@@ -30,10 +33,28 @@ func ExampleMatch() {
 		"score": []int{1, 2, 3, 4, 5},
 	})
 	fmt.Println(result)
+	rawYQL = `score ∩ ('yes')`
+	result, _ = yql.Match(rawYQL, map[string]interface{}{
+		"score": []string{"yes", "no", "maybe"},
+	})
+	fmt.Println(result)
+	rawYQL = `score has ('yes')`
+	result, _ = yql.Match(rawYQL, map[string]interface{}{
+		"score": []string{"yes", "no", "maybe"},
+	})
+	fmt.Println(result)
+	rawYQL = `score has 'yes'`
+	result, _ = yql.Match(rawYQL, map[string]interface{}{
+		"score": []string{"yes", "no", "maybe"},
+	})
+	fmt.Println(result)
 	//Output:
 	//true
 	//true
 	//false
+	//true
+	//true
+	//true
 	//true
 }
 

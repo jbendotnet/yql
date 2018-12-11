@@ -178,7 +178,7 @@ func Match(rawYQL string, data map[string]interface{}) (bool, error) {
 }
 
 func compare(actualValue interface{}, expectValue []string, op string) bool {
-	if len(expectValue) > 1 {
+	if len(expectValue) > 1 || (op == opInter || op == opNotInter || op == opHas || op == opNotHas) {
 		return compareSet(actualValue, expectValue, op)
 	}
 	e := removeQuote(expectValue[0])
@@ -203,11 +203,8 @@ func compare(actualValue interface{}, expectValue []string, op string) bool {
 		return cmpFloat(actual, expect, op)
 	case string:
 		return cmpStr(actual, e, op)
-	case []interface{}:
-		if ss, err := parseStringSet(actual); err == nil {
-			return cmpStringSet(ss, []string{e}, op)
-		}
-		return false
+	case []string:
+		return cmpStringSet(actual, []string{e}, op)
 	case bool:
 		expect, err := strconv.ParseBool(e)
 		if nil != err {
